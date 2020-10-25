@@ -1,0 +1,19 @@
+const {http} = require('../../lib/http.js')
+Page({
+  data:{
+    account:"",
+    passowrd_digest:"",
+  },
+  watchAccount(event){
+    this.setData({account:event.detail.value})
+  },
+  watchPassword(event){
+    this.setData({passowrd_digest:event.detail.value})
+  },
+  submit(){
+    http.post('/bindings',{
+      account:this.data.account,
+      passowrd_digest:this.data.passowrd_digest
+    })
+  },
+})
